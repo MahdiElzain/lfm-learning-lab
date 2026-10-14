@@ -20,8 +20,14 @@ import tempfile
 from pathlib import Path
 
 os.environ["LAB_ONLINE"] = "1"
-os.environ.setdefault("HF_TOKEN_PATH", str(Path.home() / ".cache" / "huggingface" / "token"))
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+# Authentication: respect the caller's own setup (HF_TOKEN, HF_TOKEN_PATH, or HF_HOME/token),
+# resolved BEFORE `import lab` points HF_HOME at the lab's model cache.
+if "HF_TOKEN" not in os.environ and "HF_TOKEN_PATH" not in os.environ:
+    _home = os.environ.get("HF_HOME", str(Path.home() / ".cache" / "huggingface"))
+    os.environ["HF_TOKEN_PATH"] = str(Path(_home) / "token")
+_ROOT = Path(__file__).resolve().parents[2]
+os.environ["HF_HUB_CACHE"] = str(_ROOT / "models" / "hf" / "hub")   # base models for verification: local copies
+sys.path.insert(0, str(_ROOT))
 import lab  # noqa: E402,F401
 
 from lab.common import OUTPUTS, ROOT, read_json  # noqa: E402
