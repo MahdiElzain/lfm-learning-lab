@@ -1,0 +1,30 @@
+# Lesson F: GRPO on robot dispatch (starts from the merged SFT model).
+defaults:
+  model: text_instruct
+  sft_adapter: null              # e.g. outputs/runs/text_sft/lora_quick/adapter
+  seed: 0
+  prompt_offset: 3000            # rows 3000+ were never used by SFT (quick: 0..999, standard: 0..2999)
+  n_prompts: 1000
+  reward_mode: shaped            # shaped | binary   (see lab/robot_task.py::reward)
+  num_generations: 8             # G: completions sampled per prompt (one "group")
+  per_device_train_batch_size: 16
+  gradient_accumulation_steps: 2 # 16*2 = 32 completions = 4 prompts x 8 per optimizer step
+  max_completion_length: 40
+  temperature: 1.0
+  beta: 0.0                      # KL-to-reference weight; 0 = TRL default, no reference model loaded
+  epsilon: 0.2                   # PPO-style ratio clipping
+  loss_type: dapo                # TRL 1.15 default; alternatives: grpo, dr_grpo, bnpo
+  scale_rewards: group           # divide advantages by the group std
+  num_iterations: 1              # mu: optimisation passes per generated batch
+  learning_rate: 3.0e-5
+  lora_r: 16
+  lora_alpha: 32
+  target_modules: [q_proj, k_proj, v_proj, out_proj, in_proj, w1, w2, w3]
+  gradient_checkpointing: false
+  save_steps: 50
+  eval_limit_test: 300
+  eval_limit_ood: 200
+presets:
+  quick:    {max_steps: 60}
+  standard: {max_steps: 200}
+  extended: {max_steps: 500, n_prompts: 2000}

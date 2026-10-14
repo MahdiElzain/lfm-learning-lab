@@ -1,0 +1,14 @@
+# environment and caches
+.venv/
+__pycache__/
+*.pyc
+models/
+logs/
+# regenerable data and run outputs (large); results/ is committed instead
+data/
+outputs/
+# never commit credentials
+.env
+*.token
+token
+.huggingface/

@@ -1,0 +1,20 @@
+# Lesson B: tiny decoder-only Transformer (mechanics demonstration).
+defaults:
+  seed: 0
+  corpus_lines: 4000        # generated robot-log lines (~170 KB of text)
+  block_size: 128           # T: context length in characters
+  batch_size: 32            # B
+  n_embd: 128               # C
+  n_head: 4                 # H
+  n_layer: 4                # L
+  dropout: 0.1
+  learning_rate: 3.0e-4
+  eval_every: 100
+  eval_batches: 20
+  # overfitting demo: same architecture, tiny training slice, no dropout
+  overfit_chars: 1500
+  overfit_dropout: 0.0
+presets:
+  quick:    {max_steps: 1000, overfit_steps: 1500}
+  standard: {max_steps: 3000, overfit_steps: 3000}
+  extended: {max_steps: 8000, overfit_steps: 5000, n_layer: 6, n_embd: 192, n_head: 6}

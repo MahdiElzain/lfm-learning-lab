@@ -1,0 +1,12 @@
+# VLM Lesson C: visual sequence distillation.
+defaults:
+  teacher_model: teacher_qwen     # Qwen3.5-2B, multimodal, Apache-2.0
+  seed: 0
+  n_train: 1500                   # same training questions as VLM SFT quick
+  teacher_eval_n: 450
+  batch_size: 8
+  dataset_name: qwen35_2b_vlm
+presets:
+  quick: {}
+  standard: {n_train: 2400}
+  extended: {n_train: 2400}

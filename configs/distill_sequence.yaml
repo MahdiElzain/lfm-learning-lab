@@ -1,0 +1,14 @@
+# Lesson D1: sequence distillation from a different-tokenizer teacher.
+defaults:
+  teacher_model: teacher_qwen     # Qwen3.5-2B (Apache-2.0), already in the local cache
+  teacher_thinking: false         # true = let the teacher reason first (much slower)
+  seed: 0
+  n_train: 1000                   # same training prompts as gold SFT quick (train rows 0..999)
+  teacher_eval_n: 200
+  max_new_tokens: 40
+  batch_size: 16
+  dataset_name: qwen35_2b_seq
+presets:
+  quick: {}
+  standard: {n_train: 3000}
+  extended: {n_train: 3000}

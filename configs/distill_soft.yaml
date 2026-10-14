@@ -1,0 +1,25 @@
+# Lesson D2: soft-target distillation (same-tokenizer teacher -> student).
+defaults:
+  teacher_model: text_teacher_large   # LFM2.5-1.2B-Instruct (same tokenizer as LFM2.5-350M)
+  teacher_adapter: null               # path to the teacher's task LoRA (set after training it)
+  student_model: text_instruct
+  seed: 0
+  n_train: 1000
+  sequence_source: gold               # completion tokens to score: gold | <path under data/ to teacher outputs>
+  temperature: 2.0                    # tau: >1 softens both distributions
+  alpha: 1.0                          # 1 = pure KD, 0 = pure hard-label CE (SFT)
+  kl_direction: forward               # forward = KL(teacher || student), reverse = KL(student || teacher)
+  lora_r: 16
+  lora_alpha: 32
+  target_modules: [q_proj, k_proj, v_proj, out_proj, in_proj, w1, w2, w3]
+  learning_rate: 2.0e-4
+  batch_size: 8
+  grad_accum: 2
+  epochs: 1
+  max_length: 384
+  eval_limit_test: 300
+  eval_limit_ood: 200
+presets:
+  quick: {n_train: 1000, epochs: 1}
+  standard: {n_train: 3000, epochs: 2}
+  extended: {n_train: 3000, epochs: 4}

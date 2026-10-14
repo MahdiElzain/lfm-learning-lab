@@ -1,0 +1,23 @@
+# VLM Lesson B: LoRA SFT on shape scenes (vision tower frozen).
+defaults:
+  model: vlm
+  seed: 0
+  n_train: 1500                 # questions (3 per scene -> 500 scenes)
+  n_val: 120
+  max_image_tokens: 256         # model-card default; a 256x256 scene uses 64 tokens anyway
+  lora_r: 8                     # Liquid's VLM LoRA example uses r=8, alpha=16
+  lora_alpha: 16
+  lora_dropout: 0.05
+  train_connector: false        # true = also train the multi_modal_projector fully
+  learning_rate: 2.0e-4
+  batch_size: 8
+  grad_accum: 2
+  epochs: 1
+  max_steps: -1
+  max_length: 1024              # error (not truncation) if exceeded, so image tokens are never cut
+  eval_steps: 50
+  gradient_checkpointing: false
+presets:
+  quick:    {n_train: 1500, epochs: 1}
+  standard: {n_train: 2400, epochs: 2}
+  extended: {n_train: 2400, epochs: 4, lora_r: 16, lora_alpha: 32}

@@ -1,0 +1,28 @@
+# Lesson E: DPO on synthetic, verifier-derived preference pairs.
+defaults:
+  model: text_instruct
+  sft_adapter: null              # merged into the weights; becomes the reference policy
+  seed: 0
+  prompt_offset: 5000            # rows 5000..5999: unused by SFT (0..2999) and GRPO (3000..4999 at most)
+  n_pairs: 600
+  samples_per_prompt: 4          # SFT samples searched for on-policy mistakes
+  sample_temperature: 1.0
+  use_on_policy_errors: true
+  beta: 0.1                      # strength of the implicit KL tie to the reference
+  loss_type: [sigmoid]           # [sigmoid, sft] adds an NLL term on the chosen answer (RPO-style)
+  loss_weights: null             # e.g. [1.0, 1.0] with two loss types
+  learning_rate: 1.0e-5
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 2
+  num_train_epochs: 1
+  max_steps: -1
+  max_length: 512
+  lora_r: 16
+  lora_alpha: 32
+  target_modules: [q_proj, k_proj, v_proj, out_proj, in_proj, w1, w2, w3]
+  eval_limit_test: 300
+  eval_limit_ood: 200
+presets:
+  quick: {n_pairs: 600}
+  standard: {n_pairs: 1000, num_train_epochs: 2}
+  extended: {n_pairs: 1000, num_train_epochs: 3}

@@ -1,0 +1,28 @@
+{
+  "python": "3.12.3",
+  "torch": "2.11.0+cu128",
+  "torch_cuda_runtime": "12.8",
+  "transformers": "5.19.0",
+  "cuda_available": true,
+  "peft": "0.21.2",
+  "trl": "1.15.0",
+  "datasets": "5.1.0",
+  "accelerate": "1.15.0",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "compute_capability": "8.9",
+  "driver_version": "580.178.04",
+  "driver_max_cuda": "13.0",
+  "nvidia_smi_vram_mib": {
+    "total": 8188,
+    "used": 877,
+    "free": 6929
+  },
+  "bf16_supported": true,
+  "cudnn": 91900,
+  "disk_free_gb": 218.9,
+  "ram_total_gb": 33.2,
+  "ram_available_gb": 18.5,
+  "torch_vram_free_gb": 7.16,
+  "torch_vram_total_gb": 8.18,
+  "cuda_matmul_ok": true
+}

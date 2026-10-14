@@ -1,0 +1,24 @@
+# VLM Lesson D: multimodal GRPO on shape questions.
+defaults:
+  model: vlm
+  sft_adapter: null
+  seed: 0
+  question_types: [count_color, count_shape, count_total]   # where the base model is weakest
+  prompt_offset: 0
+  n_prompts: 400
+  max_image_tokens: 256
+  blank_images: false             # true = ablation with empty images (proves visual conditioning)
+  skip_eval: false
+  num_generations: 8
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 2      # 16 completions = 2 prompts x 8 per optimizer step
+  max_completion_length: 8
+  temperature: 1.0
+  beta: 0.0
+  learning_rate: 2.0e-5
+  lora_r: 8
+  lora_alpha: 16
+presets:
+  quick: {max_steps: 30}
+  standard: {max_steps: 100}
+  extended: {max_steps: 300}
