@@ -118,6 +118,7 @@ driver is fine. Nothing in the system CUDA toolkit is used or changed.
 - [x] Docs: README, setup, troubleshooting, glossary, lessons, exercises, solutions, reproducibility, licensing
 - [x] Results tables and plots
 - [x] GitHub repository created and pushed (private, github.com/MahdiElzain/lfm-learning-lab, user's choice)
-- [ ] Hugging Face login (requires user action: `hf auth login`)
-- [ ] Hugging Face adapter(s) uploaded with model cards
-- [ ] Published artifacts re-downloaded and loaded successfully
+- [ ] Hugging Face login: not visible to the agent's process (user reports being logged in as mahdielzain in their own terminal)
+- [ ] Hugging Face adapter(s) uploaded with model cards: NOT DONE (checked 2026-10-14 19:18: no models under
+      mahdielzain; cards built and tested with --dry-run). Finish with `bash scripts/tools/publish_all_hf.sh`
+- [ ] Published artifacts re-downloaded and loaded successfully: NOT DONE (the publish script does this after uploading)
