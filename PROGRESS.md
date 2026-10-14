@@ -81,6 +81,9 @@ driver is fine. Nothing in the system CUDA toolkit is used or changed.
   repository scanned for private paths/names (none); GitHub login is `MahdiElzain` (SSH works).
   User chose: GitHub PRIVATE repo on the personal account; both adapters PUBLIC on HF; suggested bio.
   HF model cards made self-contained (system prompt embedded) because the code repo is private.
+- 2026-10-14: The user's HF account is `mahdielzain` (not `maelzain`, which is the account the session's
+  read-only HF connector uses). Uploads must run in the user's own logged-in terminal: no token is visible
+  to the agent's process.
 
 ## Text-track checklist
 

@@ -7,7 +7,7 @@ copy or publish anything from this lab.
 
 All source code, configs, lesson text, exercises and generated datasets in this
 repository are released under the **Apache License 2.0** (`LICENSE`).
-Copyright 2026 maelzain.
+Copyright 2026 Mahdi EL-Zain (GitHub: MahdiElzain).
 
 ## Models used (not redistributed by this repository)
 
