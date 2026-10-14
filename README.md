@@ -83,6 +83,8 @@ Every training/eval script takes `--preset quick|standard|extended`, `--set key=
 | **SFT + best-of-8 with a label-free verifier** | **0.693** | | 8× tokens, 7× time, no training |
 
 Full table: [`results/tables/text_main.md`](results/tables/text_main.md).
+Published adapter: [mahdielzain/lfm2.5-350m-robot-dispatch-lora](https://huggingface.co/mahdielzain/lfm2.5-350m-robot-dispatch-lora)
+(the LoRA SFT standard run; LFM Open License v1.0).
 
 ![exact match by method](results/plots/text_methods_exact.png)
 
@@ -101,7 +103,9 @@ Full table: [`results/tables/text_main.md`](results/tables/text_main.md).
 
 A model that ignored the image would keep ~100% of its answers under swapping; all of these
 follow the image. Majority-answer baseline: 0.318. Full table and per-type accuracy:
-[`results/tables/vlm_main.md`](results/tables/vlm_main.md).
+[`results/tables/vlm_main.md`](results/tables/vlm_main.md). Published adapter:
+[mahdielzain/lfm2.5-vl-450m-shapes-lora](https://huggingface.co/mahdielzain/lfm2.5-vl-450m-shapes-lora)
+(the LoRA-on-LM run; LFM Open License v1.0).
 
 ![visual dependence](results/plots/vlm_conditions.png)
 

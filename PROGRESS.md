@@ -118,7 +118,9 @@ driver is fine. Nothing in the system CUDA toolkit is used or changed.
 - [x] Docs: README, setup, troubleshooting, glossary, lessons, exercises, solutions, reproducibility, licensing
 - [x] Results tables and plots
 - [x] GitHub repository created and pushed (private, github.com/MahdiElzain/lfm-learning-lab, user's choice)
-- [ ] Hugging Face login: not visible to the agent's process (user reports being logged in as mahdielzain in their own terminal)
-- [ ] Hugging Face adapter(s) uploaded with model cards: NOT DONE (checked 2026-10-14 19:18: no models under
-      mahdielzain; cards built and tested with --dry-run). Finish with `bash scripts/tools/publish_all_hf.sh`
-- [ ] Published artifacts re-downloaded and loaded successfully: NOT DONE (the publish script does this after uploading)
+- [x] Hugging Face login: OAuth device-code flow approved by the user in the browser (account mahdielzain)
+- [x] Hugging Face adapters uploaded with model cards, LICENSE and NOTICE (public):
+      https://huggingface.co/mahdielzain/lfm2.5-350m-robot-dispatch-lora (commit 9c070c9)
+      https://huggingface.co/mahdielzain/lfm2.5-vl-450m-shapes-lora (commit d93ec5c)
+- [x] Published artifacts re-downloaded from the Hub and loaded on the GPU: text adapter exact 0.406 / valid 1.0 on the
+      first 64 test scenes; VLM adapter accuracy 0.938 on the first 64 test questions. Anonymous API check: public, license other/lfm1.0.
