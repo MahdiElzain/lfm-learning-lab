@@ -79,7 +79,8 @@ driver is fine. Nothing in the system CUDA toolkit is used or changed.
   multimodal conditioning with a blank-image ablation (reward 0.78 real vs 0.28 blank).
 - 2026-10-14: Publication prep: model cards built with `scripts/tools/publish_hf.py --dry-run`;
   repository scanned for private paths/names (none); GitHub login is `MahdiElzain` (SSH works).
-  Waiting for: user confirmation to publish + `hf auth login` (user action).
+  User chose: GitHub PRIVATE repo on the personal account; both adapters PUBLIC on HF; suggested bio.
+  HF model cards made self-contained (system prompt embedded) because the code repo is private.
 
 ## Text-track checklist
 
@@ -113,7 +114,7 @@ driver is fine. Nothing in the system CUDA toolkit is used or changed.
 
 - [x] Docs: README, setup, troubleshooting, glossary, lessons, exercises, solutions, reproducibility, licensing
 - [x] Results tables and plots
-- [ ] GitHub repository created and pushed
+- [x] GitHub repository created and pushed (private, github.com/MahdiElzain/lfm-learning-lab, user's choice)
 - [ ] Hugging Face login (requires user action: `hf auth login`)
 - [ ] Hugging Face adapter(s) uploaded with model cards
 - [ ] Published artifacts re-downloaded and loaded successfully
